@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jan-Aushadhi Finder | Generic Medicine Locator</title>
+  <meta name="description" content="Find generic equivalents of branded medicines and locate the nearest Jan-Aushadhi Kendra near you. Save up to 90% on medicines." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash-screen" class="splash">
+  <div class="splash-content">
+    <div class="splash-logo">
+      <div class="logo-icon">💊</div>
+      <h1 class="splash-title">Jan-Aushadhi</h1>
+      <p class="splash-subtitle">Finder</p>
+    </div>
+    <p class="splash-tagline">Generic Medicines. Real Savings.</p>
+    <div class="splash-loader"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<!-- ONBOARDING -->
+<div id="onboarding" class="screen hidden">
+  <div class="onboarding-slides">
+    <div class="ob-slide active" id="ob1">
+      <div class="ob-illustration">🔍</div>
+      <h2>Search Any Medicine</h2>
+      <p>Type a branded drug name and instantly discover its cheaper generic equivalent — powered by GenAI.</p>
+    </div>
+    <div class="ob-slide" id="ob2">
+      <div class="ob-illustration">💰</div>
+      <h2>Save Up to 90%</h2>
+      <p>Compare prices side-by-side and calculate how much you save monthly and annually by switching to generics.</p>
+    </div>
+    <div class="ob-slide" id="ob3">
+      <div class="ob-illustration">🗺️</div>
+      <h2>Find Your Nearest Kendra</h2>
+      <p>Locate Jan-Aushadhi Kendras within 10 km on a live map — get directions instantly.</p>
+    </div>
+  </div>
+  <div class="ob-dots">
+    <span class="dot active" id="dot0"></span>
+    <span class="dot" id="dot1"></span>
+    <span class="dot" id="dot2"></span>
+  </div>
+  <div class="ob-actions">
+    <button class="btn-ghost" id="ob-skip">Skip</button>
+    <button class="btn-primary" id="ob-next">Next</button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="app hidden">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">
+        <span class="topbar-icon">💊</span>
+        <div>
+          <span class="topbar-title">Jan-Aushadhi</span>
+          <span class="topbar-sub">Finder</span>
+        </div>
+      </div>
+      <button class="icon-btn" id="notif-btn" title="Notifications">🔔</button>
+    </div>
+  </header>
+
+  <!-- SCREEN: HOME / SEARCH -->
+  <section class="screen-panel active" id="screen-home">
+    <div class="hero-banner">
+      <div class="hero-text">
+        <p class="hero-label">PMBJP · 10,000+ Kendras</p>
+        <h2 class="hero-heading">Generic Medicines,<br/><span class="gradient-text">90% Cheaper</span></h2>
+      </div>
+      <div class="hero-badge">
+        <span class="badge-num">₹</span>
+        <span class="badge-label">Save Big</span>
+      </div>
+    </div>
+
+    <div class="search-card">
+      <div class="search-row">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="medicine-search" class="search-input" placeholder="Search branded medicine… e.g. Crocin" autocomplete="off" />
+        <button class="scan-btn" id="scan-btn" title="Scan Prescription">📷</button>
+      </div>
+      <div id="search-results" class="search-results hidden"></div>
+    </div>
+
+    <div class="section-title">Quick Categories</div>
+    <div class="chip-row">
+      <button class="chip active" data-cat="all">All</button>
+      <button class="chip" data-cat="pain">Pain Relief</button>
+      <button class="chip" data-cat="diabetes">Diabetes</button>
+      <button class="chip" data-cat="bp">Blood Pressure</button>
+      <button class="chip" data-cat="antibiotic">Antibiotics</button>
+      <button class="chip" data-cat="vitamin">Vitamins</button>
+    </div>
+
+    <div class="section-title">Popular Searches</div>
+    <div id="popular-list" class="medicine-list"></div>
+
+    <div class="info-banner">
+      <div class="info-banner-icon">✅</div>
+      <div class="info-banner-text">
+        <strong>Generic = Same Efficacy</strong>
+        <p>All Jan-Aushadhi medicines pass the same CDSCO quality checks as branded drugs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN: MEDICINE DETAIL -->
+  <section class="screen-panel" id="screen-detail">
+    <button class="back-btn" id="back-to-home">← Back</button>
+    <div id="detail-content"></div>
+  </section>
+
+  <!-- SCREEN: STORE LOCATOR -->
+  <section class="screen-panel" id="screen-map">
+    <div class="map-header">
+      <h2 class="screen-heading">Store Locator</h2>
+      <div class="location-bar">
+        <span>📍</span>
+        <input type="text" id="pincode-input" placeholder="Enter pincode or use GPS" class="location-input" />
+        <button class="btn-sm" id="gps-btn">GPS</button>
+      </div>
+    </div>
+    <div class="map-container" id="map-view">
+      <div class="map-placeholder">
+        <div class="map-bg"></div>
+        <div id="map-pins"></div>
+        <div class="map-user-pin">📍<span>You</span></div>
+      </div>
+    </div>
+    <div class="stores-list" id="stores-list"></div>
+  </section>
+
+  <!-- SCREEN: MY MEDICINES (REFILL) -->
+  <section class="screen-panel" id="screen-meds">
+    <div class="screen-header">
+      <h2 class="screen-heading">My Medicines</h2>
+      <button class="btn-primary btn-sm" id="add-med-btn">+ Add</button>
+    </div>
+    <div class="refill-cards" id="refill-list"></div>
+    <div class="empty-state" id="refill-empty">
+      <div class="empty-icon">💊</div>
+      <p>No medicines tracked yet.<br/>Add a medicine to set refill reminders.</p>
+    </div>
+
+    <!-- Add Medicine Modal -->
+    <div class="modal-overlay hidden" id="add-med-modal">
+      <div class="modal-card">
+        <h3>Add Medicine</h3>
+        <label>Medicine Name</label>
+        <input type="text" id="new-med-name" placeholder="e.g. Metformin 500mg" class="modal-input" />
+        <label>Refill Date</label>
+        <input type="date" id="new-med-date" class="modal-input" />
+        <label>Monthly Quantity (tablets)</label>
+        <input type="number" id="new-med-qty" placeholder="e.g. 30" class="modal-input" />
+        <div class="modal-actions">
+          <button class="btn-ghost" id="cancel-med">Cancel</button>
+          <button class="btn-primary" id="save-med">Save</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN: HEALTH LITERACY -->
+  <section class="screen-panel" id="screen-info">
+    <h2 class="screen-heading">Health Literacy</h2>
+    <p class="screen-sub">Swipe to learn about generic medicines</p>
+    <div class="info-cards-container" id="info-cards"></div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-screen="screen-home" id="nav-home">
+      <span class="nav-icon">🏠</span><span class="nav-label">Home</span>
+    </button>
+    <button class="nav-item" data-screen="screen-map" id="nav-map">
+      <span class="nav-icon">🗺️</span><span class="nav-label">Locator</span>
+    </button>
+    <button class="nav-item" data-screen="screen-meds" id="nav-meds">
+      <span class="nav-icon">💊</span><span class="nav-label">My Meds</span>
+    </button>
+    <button class="nav-item" data-screen="screen-info" id="nav-info">
+      <span class="nav-icon">📚</span><span class="nav-label">Learn</span>
+    </button>
+  </nav>
+</div>
+
+<!-- STOCK REQUEST TOAST -->
+<div class="toast hidden" id="stock-toast">
+  <span class="toast-icon">✅</span>
+  <span id="toast-msg">Stock request sent!</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
