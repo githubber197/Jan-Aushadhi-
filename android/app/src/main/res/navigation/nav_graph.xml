@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.janaushadhi.finder.ui.onboarding.OnboardingFragment"
+        android:label="Onboarding">
+        <action
+            android:id="@+id/action_onboarding_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.janaushadhi.finder.ui.home.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.janaushadhi.finder.ui.detail.DetailFragment"
+        android:label="Medicine Detail">
+        <argument
+            android:name="medicine_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_detail_to_stores"
+            app:destination="@id/storeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.janaushadhi.finder.ui.stores.StoreFragment"
+        android:label="Store Locator" />
+
+    <fragment
+        android:id="@+id/myMedsFragment"
+        android:name="com.janaushadhi.finder.ui.mymeds.MyMedsFragment"
+        android:label="My Medicines" />
+
+    <fragment
+        android:id="@+id/learnFragment"
+        android:name="com.janaushadhi.finder.ui.learn.LearnFragment"
+        android:label="Health Literacy" />
+
+</navigation>

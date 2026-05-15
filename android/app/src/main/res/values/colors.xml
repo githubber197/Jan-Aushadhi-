@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand colours (PMBJP teal/green) -->
+    <color name="teal_primary">#00897B</color>
+    <color name="teal_dark">#00695C</color>
+    <color name="teal_light">#B2DFDB</color>
+    <color name="green_accent">#00C853</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="background_grey">#F5F5F5</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="green_open">#2E7D32</color>
+    <color name="red_closed">#C62828</color>
+    <color name="orange_urgent">#E65100</color>
+    <color name="savings_green">#1B5E20</color>
+    <color name="savings_bg">#E8F5E9</color>
+    <color name="brand_red_bg">#FFEBEE</color>
+    <color name="brand_red_text">#C62828</color>
+    <color name="generic_green_bg">#E8F5E9</color>
+    <color name="generic_green_text">#1B5E20</color>
+</resources>
